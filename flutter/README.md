@@ -48,9 +48,3 @@ démonstration (quand la biométrie n'est pas disponible) : `1234`.
 - **Step-up** : la vérification du PIN doit être faite par votre backend.
 - **Push** : branchez votre fournisseur dans `PushBridge` et enregistrez
   le token de l'appareil auprès de votre backend.
-
-## Note sur les dépendances
-
-`pubspec.yaml` limite `image` à `< 4.11.0` : la version 4.11.0 de ce
-package, utilisée indirectement par le SDK (reçus PDF), ne compile pas
-avec la version d'`archive` imposée par `pdf`.
