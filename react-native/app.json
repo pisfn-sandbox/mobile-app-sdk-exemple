@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Ma Banque (exemple)",
+    "slug": "pispi-sdk-exemple",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.bceao.pispi.sdk.exemple"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F5F0E8",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.bceao.pispi.sdk.exemple"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-audio",
+      "expo-image",
+      "expo-font",
+      "expo-asset",
+      "expo-video",
+      "expo-sharing",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "L’accès à vos contacts permet d’envoyer de l’argent à un contact."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Votre position est utilisée pour vérifier vos transactions et prévenir la fraude."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "La caméra permet de scanner les QR codes PI-SPI.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "L’accès à vos photos permet d’importer un QR code ou un ticket de caisse.",
+          "cameraPermission": "La caméra permet de photographier un ticket de caisse."
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Face ID confirme vos opérations PI-SPI."
+        }
+      ]
+    ]
+  }
+}

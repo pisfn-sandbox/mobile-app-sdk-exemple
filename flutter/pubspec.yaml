@@ -1,0 +1,38 @@
+name: pispi_sdk_exemple
+description: "Exemple d'intégration du SDK PI-SPI (bceao_pispi_app) dans une application mobile hôte."
+# Application d'exemple : ne doit pas être publiée sur pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # SDK PI-SPI : https://pub.dev/packages/bceao_pispi_app
+  bceao_pispi_app: ^1.2.0
+  # Vérification renforcée biométrique de l'application hôte
+  local_auth: ^3.0.2
+  # Formatage des montants de l'accueil
+  intl: any
+  # Contournement : image 4.11.0 utilise une fonction d'archive >= 4.1,
+  # alors que pdf (dépendance du SDK) limite archive à < 4.1 : la
+  # compilation échoue. À retirer quand le SDK fixera lui-même la version.
+  image: ">=4.5.0 <4.11.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Logos π et PI-SPI des boutons d'entrée
+  assets:
+    - assets/images/

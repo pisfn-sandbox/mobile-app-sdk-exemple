@@ -1,0 +1,3 @@
+# Règles d'analyse statique recommandées pour les applications Flutter.
+# Lancer `flutter analyze` pour vérifier le code.
+include: package:flutter_lints/flutter.yaml

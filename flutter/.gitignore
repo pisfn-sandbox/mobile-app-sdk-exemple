@@ -1,0 +1,48 @@
+# Divers
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ / Android Studio
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Le dossier .vscode (configurations de lancement) peut être versionné :
+# la ligne est commentée par défaut.
+#.vscode/
+
+# Flutter / Dart / Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symboles et obfuscation
+app.*.symbols
+app.*.map.json
+
+# Artefacts de build Android Studio
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Configuration locale (ne jamais publier de secrets)
+config/*.local.json
+*.jks
+*.keystore
+key.properties

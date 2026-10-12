@@ -1,0 +1,26 @@
+# Dépendances
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Projets natifs générés par `npx expo prebuild` / `expo run:*`
+/android
+/ios
+
+# Variables d'environnement locales (ne jamais publier de secrets)
+.env
+.env.local
+
+# Divers
+*.log
+.DS_Store
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.pem

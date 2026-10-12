@@ -1,0 +1,5 @@
+{
+  "PISPI_DEMO_MODE": false,
+  "PISPI_API_BASE_URL": "https://votre-backend-pispi.example.com/api",
+  "PISPI_PSP_CODE_MEMBRE": "VOTRE_CODE_MEMBRE"
+}
