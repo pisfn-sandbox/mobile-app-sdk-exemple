@@ -11,6 +11,10 @@
 	<string>Votre position est utilisée pour vérifier vos transactions et prévenir la fraude.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>L'accès à vos photos permet d'importer un QR code ou un ticket de caisse.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Le micro permet de rechercher une fonctionnalité à la voix.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>La reconnaissance vocale transforme votre voix en texte pour la recherche.</string>
 	<!-- Vérification renforcée de l'application hôte (local_auth) -->
 	<key>NSFaceIDUsageDescription</key>
 	<string>Face ID confirme vos opérations PI-SPI.</string>

@@ -59,6 +59,14 @@
         {
           "faceIDPermission": "Face ID confirme vos opérations PI-SPI."
         }
+      ],
+      "expo-status-bar",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Le micro permet de rechercher une fonctionnalité à la voix.",
+          "speechRecognitionPermission": "La reconnaissance vocale transforme votre voix en texte pour la recherche."
+        }
       ]
     ]
   }

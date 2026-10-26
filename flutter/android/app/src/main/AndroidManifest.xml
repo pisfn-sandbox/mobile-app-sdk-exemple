@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Recherche vocale -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Vérification renforcée biométrique de l'application hôte (local_auth) -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <application
@@ -52,6 +54,10 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Recherche vocale du SDK PI-SPI (Android 11+) -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
 </manifest>
