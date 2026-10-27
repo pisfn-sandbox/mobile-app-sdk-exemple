@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
 
   # SDK PI-SPI : https://pub.dev/packages/bceao_pispi_app
-  bceao_pispi_app: ^1.5.0
+  bceao_pispi_app: ^1.5.1
   # Vérification renforcée biométrique de l'application hôte
   local_auth: ^3.0.2
   # Formatage des montants de l'accueil
