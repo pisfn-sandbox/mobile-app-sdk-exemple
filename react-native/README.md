@@ -7,7 +7,7 @@ Application hôte d'exemple (« Ma Banque ») qui intègre le SDK React Native
 
 Prérequis : Node.js 20+, Android Studio (Android) ou Xcode (iOS). Le SDK
 utilise des modules natifs : l'exemple tourne dans un *development build*
-(`expo run:*`), **pas dans Expo Go**. `@pi-spi/app` 1.4 demande le **SDK
+(`expo run:*`), **pas dans Expo Go**. `@pi-spi/app` (depuis la 1.4) demande le **SDK
 Expo 58** (React Native 0.88).
 
 ```sh
