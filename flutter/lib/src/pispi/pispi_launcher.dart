@@ -19,7 +19,11 @@ class PiSpiLauncher {
 
   /// Ouvre le SDK. [theme] impose un thème (sinon l'utilisateur garde le
   /// sien et peut en changer dans les paramètres du SDK).
-  Future<void> open(BuildContext context, {Themes? theme}) async {
+  Future<void> open(
+    BuildContext context, {
+    Themes? theme,
+    Accents? accent,
+  }) async {
     final user = session.user;
     final token = session.accessToken;
     // Le SDK ne s'ouvre que pour un utilisateur déjà connecté.
@@ -66,7 +70,10 @@ class PiSpiLauncher {
         appVersion: AppEnv.appVersion,
         // Le SDK ne gère que fr, en et pt : l'hôte transmet sa langue.
         defaultLocale: const Locale('fr'),
+        // Thème (système, clair, sombre) et couleur d'accentuation imposés
+        // à l'ouverture (null : choix de l'utilisateur conservé).
         defaultTheme: theme,
+        defaultAccent: accent,
         // Laisse l'utilisateur changer de thème dans le SDK même si un
         // thème est imposé à l'ouverture.
         canChangeTheme: true,

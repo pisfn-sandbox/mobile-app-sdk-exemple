@@ -1,4 +1,5 @@
 import {
+  type Accents,
   PiSpiApiConfig,
   PiSpiAppConfig,
   PiSpiIdentificationConfig,
@@ -28,8 +29,10 @@ export function buildPiSpiConfig(params: {
   onClose: () => void;
   /** Vérification renforcée (biométrie ou PIN), voir `useStepUpAuth`. */
   requireStepUpIdentification: () => Promise<boolean>;
-  /** Thème imposé (sinon l'utilisateur garde le sien). */
+  /** Thème imposé : système, clair ou sombre (sinon l'utilisateur garde le sien). */
   theme?: Themes;
+  /** Couleur d'accentuation imposée (sinon l'utilisateur garde la sienne). */
+  accent?: Accents;
 }): PiSpiSdkConfig {
   const { user } = params;
   return new PiSpiSdkConfig({
@@ -60,6 +63,7 @@ export function buildPiSpiConfig(params: {
       // Le SDK ne gère que fr, en et pt : l'hôte transmet sa langue.
       defaultLocale: 'fr',
       defaultTheme: params.theme,
+      defaultAccent: params.accent,
       // Laisse l'utilisateur changer de thème dans le SDK même si un thème
       // est imposé à l'ouverture.
       canChangeTheme: true,

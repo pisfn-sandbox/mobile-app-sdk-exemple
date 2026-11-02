@@ -1,4 +1,4 @@
-import type { PiSpiSdkConfig, Themes } from '@pi-spi/app';
+import type { Accents, PiSpiSdkConfig, Themes } from '@pi-spi/app';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
@@ -32,6 +32,7 @@ function Root() {
   const stepUp = useStepUpAuth();
   const [sdkConfig, setSdkConfig] = useState<PiSpiSdkConfig | null>(null);
   const [theme, setTheme] = useState<Themes | undefined>(undefined);
+  const [accent, setAccent] = useState<Accents | undefined>(undefined);
 
   const closePiSpi = useCallback(() => setSdkConfig(null), []);
 
@@ -53,9 +54,10 @@ function Root() {
         onClose: closePiSpi,
         requireStepUpIdentification: stepUp.request,
         theme,
+        accent,
       }),
     );
-  }, [session, stepUp.request, theme, closePiSpi]);
+  }, [session, stepUp.request, theme, accent, closePiSpi]);
 
   const openPiSpiAndSimulatePush = useCallback(() => {
     openPiSpi();
@@ -67,7 +69,14 @@ function Root() {
 
   return (
     <View style={styles.flex}>
-      <HomeScreen theme={theme} onThemeChange={setTheme} onOpenPiSpi={openPiSpi} onSimulatePush={openPiSpiAndSimulatePush} />
+      <HomeScreen
+        theme={theme}
+        onThemeChange={setTheme}
+        accent={accent}
+        onAccentChange={setAccent}
+        onOpenPiSpi={openPiSpi}
+        onSimulatePush={openPiSpiAndSimulatePush}
+      />
       {sdkConfig != null && <PiSpiScreen config={sdkConfig} onClose={closePiSpi} />}
       {/* Saisie du PIN de repli, au-dessus des écrans du SDK */}
       {stepUp.overlay}

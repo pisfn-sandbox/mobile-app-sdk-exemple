@@ -23,10 +23,18 @@ class _HomePageState extends State<HomePage> {
   /// Thème imposé au SDK (démo). `null` : celui choisi par l'utilisateur.
   Themes? _theme;
 
+  /// Couleur d'accentuation imposée au SDK (démo). `null` : celle choisie
+  /// par l'utilisateur.
+  Accents? _accent;
+
   final _amount = NumberFormat.decimalPattern('fr');
 
   Future<void> _openPiSpi({bool simulatePush = false}) async {
-    final opening = widget.launcher.open(context, theme: _theme);
+    final opening = widget.launcher.open(
+      context,
+      theme: _theme,
+      accent: _accent,
+    );
     if (simulatePush) {
       // Laisse le temps à l'accueil du SDK de s'afficher.
       await Future<void>.delayed(const Duration(seconds: 3));
@@ -77,6 +85,8 @@ class _HomePageState extends State<HomePage> {
             _DemoOptions(
               theme: _theme,
               onThemeChanged: (t) => setState(() => _theme = t),
+              accent: _accent,
+              onAccentChanged: (a) => setState(() => _accent = a),
               onSimulatePush: () => _openPiSpi(simulatePush: true),
             ),
           ],
@@ -91,24 +101,35 @@ class _DemoOptions extends StatelessWidget {
   const _DemoOptions({
     required this.theme,
     required this.onThemeChanged,
+    required this.accent,
+    required this.onAccentChanged,
     required this.onSimulatePush,
   });
 
   final Themes? theme;
   final ValueChanged<Themes?> onThemeChanged;
+  final Accents? accent;
+  final ValueChanged<Accents?> onAccentChanged;
   final VoidCallback onSimulatePush;
 
   static const _labels = {
     Themes.system: 'Système',
     Themes.light: 'Clair',
     Themes.dark: 'Sombre',
-    Themes.yellow: 'Jaune',
-    Themes.green: 'Vert',
-    Themes.blue: 'Bleu',
-    Themes.red: 'Rouge',
-    Themes.orange: 'Orange',
-    Themes.purple: 'Violet',
-    Themes.pink: 'Rose',
+  };
+
+  static const _accents = {
+    Accents.pispi: 'Défaut (PI-SPI)',
+    Accents.vert: 'Vert',
+    Accents.bleu: 'Bleu',
+    Accents.rouge: 'Rouge',
+    Accents.orange: 'Orange',
+    Accents.violet: 'Violet',
+    Accents.rose: 'Rose',
+    Accents.turquoise: 'Turquoise',
+    Accents.terracotta: 'Terracotta',
+    Accents.bordeaux: 'Bordeaux',
+    Accents.ardoise: 'Ardoise',
   };
 
   @override
@@ -137,6 +158,23 @@ class _DemoOptions extends StatelessWidget {
                   DropdownMenuItem(value: entry.key, child: Text(entry.value)),
               ],
               onChanged: onThemeChanged,
+            ),
+            const SizedBox(height: 12),
+            DropdownButtonFormField<Accents?>(
+              initialValue: accent,
+              decoration: const InputDecoration(
+                labelText: 'Couleur d\'accentuation du SDK',
+                border: OutlineInputBorder(),
+              ),
+              items: [
+                const DropdownMenuItem(
+                  value: null,
+                  child: Text('Choix de l\'utilisateur'),
+                ),
+                for (final entry in _accents.entries)
+                  DropdownMenuItem(value: entry.key, child: Text(entry.value)),
+              ],
+              onChanged: onAccentChanged,
             ),
             const SizedBox(height: 12),
             OutlinedButton.icon(

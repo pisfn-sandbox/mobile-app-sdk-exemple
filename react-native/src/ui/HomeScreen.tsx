@@ -1,5 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { Themes } from '@pi-spi/app';
+import { Accents, Themes } from '@pi-spi/app';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -14,13 +14,21 @@ const THEMES: { value: Themes | undefined; label: string }[] = [
   { value: Themes.system, label: 'Système' },
   { value: Themes.light, label: 'Clair' },
   { value: Themes.dark, label: 'Sombre' },
-  { value: Themes.yellow, label: 'Jaune' },
-  { value: Themes.green, label: 'Vert' },
-  { value: Themes.blue, label: 'Bleu' },
-  { value: Themes.red, label: 'Rouge' },
-  { value: Themes.orange, label: 'Orange' },
-  { value: Themes.purple, label: 'Violet' },
-  { value: Themes.pink, label: 'Rose' },
+];
+
+const ACCENTS: { value: Accents | undefined; label: string }[] = [
+  { value: undefined, label: "Choix de l'utilisateur" },
+  { value: Accents.pispi, label: 'Défaut (PI-SPI)' },
+  { value: Accents.vert, label: 'Vert' },
+  { value: Accents.bleu, label: 'Bleu' },
+  { value: Accents.rouge, label: 'Rouge' },
+  { value: Accents.orange, label: 'Orange' },
+  { value: Accents.violet, label: 'Violet' },
+  { value: Accents.rose, label: 'Rose' },
+  { value: Accents.turquoise, label: 'Turquoise' },
+  { value: Accents.terracotta, label: 'Terracotta' },
+  { value: Accents.bordeaux, label: 'Bordeaux' },
+  { value: Accents.ardoise, label: 'Ardoise' },
 ];
 
 const formatMontant = (montant: number) => `${new Intl.NumberFormat('fr-FR').format(montant)} F CFA`;
@@ -29,12 +37,17 @@ const formatMontant = (montant: number) => `${new Intl.NumberFormat('fr-FR').for
 export function HomeScreen({
   theme,
   onThemeChange,
+  accent,
+  onAccentChange,
   onOpenPiSpi,
   onSimulatePush,
 }: {
   /** Thème imposé au SDK (démo). `undefined` : celui choisi par l'utilisateur. */
   theme: Themes | undefined;
   onThemeChange: (theme: Themes | undefined) => void;
+  /** Couleur d'accentuation imposée au SDK (démo). `undefined` : celle choisie par l'utilisateur. */
+  accent: Accents | undefined;
+  onAccentChange: (accent: Accents | undefined) => void;
   onOpenPiSpi: () => void;
   onSimulatePush: () => void;
 }) {
@@ -79,6 +92,23 @@ export function HomeScreen({
                   accessibilityRole="button"
                   accessibilityState={{ selected }}
                   onPress={() => onThemeChange(item.value)}
+                  style={[styles.chip, selected && styles.chipSelected]}
+                >
+                  <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{item.label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          <Text style={styles.muted}>Couleur d'accentuation du SDK</Text>
+          <View style={styles.chips}>
+            {ACCENTS.map((item) => {
+              const selected = item.value === accent;
+              return (
+                <Pressable
+                  key={item.label}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected }}
+                  onPress={() => onAccentChange(item.value)}
                   style={[styles.chip, selected && styles.chipSelected]}
                 >
                   <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{item.label}</Text>
