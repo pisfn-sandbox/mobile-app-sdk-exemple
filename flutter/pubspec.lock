@@ -109,10 +109,10 @@ packages:
     dependency: "direct main"
     description:
       name: bceao_pispi_app
-      sha256: "3a9cadf06b23ed4ce01059ec262cdd2a6c5dc61792d60d6decc2823447b6ce15"
+      sha256: "0fcd20761171941ae39e9316b375c0a5aa1328fdcad2525b091890edeef7cb7c"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   bidi:
     dependency: transitive
     description:
